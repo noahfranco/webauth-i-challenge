@@ -25,7 +25,7 @@ function add(user) { // register
         return findById([ids]) 
     })
 }
-function addId(filter) { // login
+function addId(filter) { // login and users
     return db("users")
     .where(filter)
 }

@@ -13,32 +13,32 @@ router.get("/", protected, (req, res) => { // localhost:8000/api/users
     })
     .catch(error => {
         console.log(error)
-        res.status(500).json({error: "Internal Server Error"})
+        res.status(500).json({error: "Internal Server Error 1"})
     })
 })
 
 // protected middleware 
 function protected(req, res, next) {
-    const username = req.body.username
-    const password = req.body.password
-
-    if(!username && !password) {
-        res.status(401).json({error: "Wrong password or username"})
-    } else {
-        Users.findById({ username })
-        .then(response => {
-        if(response && bcrypt.compareSync(password, user.password)) {
-            next()
-            } else {
-                res.status(400).json({error: "please provide credentials"})
-            }
+    const { username } = req.headers
+    const { password } = req.headers
+  
+    if (username && password) {
+      Users.addBy({ username })
+        .first()
+        .then(user => {
+          if (user && bcrypt.compareSync(password, user.password)) {
+            next();
+          } else {
+            res.status(401).json({ message: 'You cannot pass!!' });
+          }
         })
         .catch(error => {
-            console.log(error)
-            res.status(500).json({error: "Internal Server Error"})
-        })
+          res.status(500).json(error);
+        });
+    } else {
+      res.status(400).json({ message: 'please provide credentials' });
     }
-}
+  }
 
 
 module.exports = router; 
