@@ -7,3 +7,5 @@ const router = express.Router()
 router.get("/", (req, res) => { // localhost:8000/api/users
     
 })
+
+module.exports = router; 
