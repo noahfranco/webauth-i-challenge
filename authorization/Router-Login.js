@@ -7,8 +7,8 @@ const Users =  require("./Users-Model.js");
 const router = express.Router()
 
 router.post("/", (req, res) => { // localhost:8000/api/login
-    const username = req.body
-    const password = req.body
+    const { username } = req.body
+    const { password } = req.body
 
     if(!username && !password) {
         res.status(401).json({ error: "Wrong password or username" })
@@ -28,7 +28,5 @@ router.post("/", (req, res) => { // localhost:8000/api/login
         })
     }
 })
-
-// protected middleware 
 
 module.exports = router; 

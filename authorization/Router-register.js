@@ -26,7 +26,7 @@ router.post("/", (req, res) => { // localhost:8000/api/register
     }
 })
 
-// hash to protect Register 
+// hash to protect Register middleware 
 
 router.get("/hash", (req, res) => {
     const password = req.headers.authorization

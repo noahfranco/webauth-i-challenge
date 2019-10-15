@@ -8,4 +8,6 @@ router.get("/", (req, res) => { // localhost:8000/api/users
     
 })
 
+// protected middleware 
+
 module.exports = router; 
