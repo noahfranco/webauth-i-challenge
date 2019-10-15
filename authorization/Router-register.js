@@ -15,7 +15,7 @@ router.post("/", (req, res) => { // localhost:8000/api/register
     if(!hash) {
         res.status(404).json({error: "Please enter the correct credentials"})
     } else {
-        Users.add(hash)
+        Users.add(user)
         .then(response => {
             res.status(200).json(response)
         })

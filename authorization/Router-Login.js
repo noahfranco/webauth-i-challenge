@@ -14,6 +14,7 @@ router.post("/", (req, res) => { // localhost:8000/api/login
         res.status(401).json({ error: "Wrong password or username" })
     } else {
         Users.addId({ username })
+        .first()
         .then(user => {
             if(user && bcrypt.compareSync(password, user.password)) {
                 res.status(200).json({ message: `Welcome ${user.username}` })   
