@@ -7,7 +7,6 @@ const Users =  require("./Users-Model.js");
 const router = express.Router()
 
 router.get("/", protected, (req, res) => { // localhost:8000/api/users
-  console.log("username", req.session.username)
     Users.find() 
     .then(response => {
         res.status(200).json(response)
