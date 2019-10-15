@@ -7,6 +7,7 @@ const Users =  require("./Users-Model.js");
 const router = express.Router()
 
 router.get("/", protected, (req, res) => { // localhost:8000/api/users
+  console.log("username", req.session.username)
     Users.find() 
     .then(response => {
         res.status(200).json(response)
@@ -23,7 +24,7 @@ function protected(req, res, next) {
     const { password } = req.headers
   
     if (username && password) {
-      Users.addBy({ username })
+      Users.addId({ username })
         .first()
         .then(user => {
           if (user && bcrypt.compareSync(password, user.password)) {
