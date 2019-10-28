@@ -1,6 +1,5 @@
 const db = require("../data/db.config.js");  
 
-
 module.exports = {
     add, // .post() ~ register
     addId, // .get() ~ login
